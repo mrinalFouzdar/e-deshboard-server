@@ -19,7 +19,8 @@ const UserSchema = new mongoose.Schema({
     isAdmin:{
         type:Boolean,
         default:false
-    }
+    },
+    token:[{token:{type:String,required:true}}]
 },{timestamps:true})
 
 UserSchema.pre("save" , async function(next){
@@ -32,4 +33,4 @@ UserSchema.pre("save" , async function(next){
  }
 })
 
-module.exports =new mongoose.model("User",UserSchema)
+module.exports = mongoose.model("User",UserSchema)

@@ -6,7 +6,8 @@ const { default: mongoose } = require("mongoose");
 // const User = require("./db/User");
 // const Product = require("./db/Product")
 // require("./db/config");
-const authRoute = require("./Routes/auth")
+const authRoute = require("./Routes/auth");
+const parser = require("cookie-parser")
 const app = express();
 dotenv.config()
 
@@ -29,7 +30,8 @@ mongoose.connection.on('connected',()=>{
 
 
 app.use(express.json());
-app.use(cors());
+app.use(parser())
+app.use(cors({ origin:true, credentials:true }));
 
 
 // app.use("/",(req,resp)=>{
